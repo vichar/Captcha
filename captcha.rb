@@ -43,14 +43,17 @@ def is_valid_input?(input_text)
   input_text.split(',').length == 4
 end
 
+def style (style_code)
+  style_codes = {1 => method(:style_1), 0 => method(:style_2)}
+  style_codes[style_code]
+end
+
 def captcha (input_text)
   split_input = input_text.split(',').map(&:strip).map(&:to_i)
-  formatter = split_input[0].to_i
+  format_code = split_input[0].to_i
   operation = split_input.slice(1, 3)
-  if formatter == 1
-    output = style_1(operation)
-  else
-    output =  style_2(operation)
-  end
-  output
+  formatter = style(format_code)
+
+  formatter.call(operation)
 end
+
