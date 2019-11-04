@@ -39,8 +39,12 @@ def style_2(operation)
   "#{operation[0]} #{translate_operator_code(operation[1])} #{transcribe(operation[2])}"
 end
 
-def is_valid_input?(input_text)
-  input_text.split(',').length == 4
+def is_valid_input(input_text)
+  if input_text.split(',').length == 4
+    "Operation '#{captcha(input_text)}'"
+  else
+    "Invalid Input '#{input_text}'"
+  end
 end
 
 def style (style_code)

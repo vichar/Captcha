@@ -4,12 +4,12 @@ require_relative 'captcha'
 describe 'captcha' do
   context 'Given an Input String:' do
     it '1,1,1,1 is_valid_input? should return true' do
-      result = is_valid_input?('1,1,1,1')
-      expect(result).to be true
+      result = is_valid_input('1,1,1,1')
+      expect(result).to include "Operation"
     end
     it '1,1 is_valid_input? should return false' do
-      result =  is_valid_input?('1,1')
-      expect(result).to be false
+      result =  is_valid_input('1,1')
+      expect(result).to include "Invalid Input"
     end
 
     it '1,1,1,1  captcha should return' do
