@@ -13,4 +13,4 @@ format มี 2 แบบ
 1,1,1,1 จะได “one - 1"
 
 
-## Make with Love with RubyMine
+## Make with Love on RubyMine
