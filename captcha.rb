@@ -26,24 +26,30 @@ def translate_operator_code (numeral)
 end
 
 def style_1(operation)
-  unless operation.instance_of?(Array)
+  begin
+    operation.length
+    "#{transcribe(operation[0])} #{translate_operator_code(operation[1])} #{operation[2]}"
+  rescue
     raise ArgumentError.new('Input must be an instance of array')
   end
-  "#{transcribe(operation[0])} #{translate_operator_code(operation[1])} #{operation[2]}"
 end
 
 def style_2(operation)
-  unless operation.instance_of?(Array)
+  begin
+    operation.length
+    "#{operation[0]} #{translate_operator_code(operation[1])} #{transcribe(operation[2])}"
+  rescue
     raise ArgumentError.new('Input must be an instance of array')
   end
-  "#{operation[0]} #{translate_operator_code(operation[1])} #{transcribe(operation[2])}"
 end
 
 def is_valid_input(input_text)
-  if input_text.split(',').length == 4
-    "Operation '#{captcha(input_text)}'"
-  else
-    "Invalid Input '#{input_text}'"
+  begin
+    delimited_input = input_text.split(',')
+    delimited_input[3].length
+    "Operation '#{input_text}'"
+  rescue NoMethodError
+    raise ArgumentError.new('Invalid Input')
   end
 end
 
